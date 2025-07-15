@@ -18,3 +18,5 @@ hashMap.set('tiger', 'orange');
 hashMap.set('cat', 'ginger');
 console.log(hashMap);
 console.log(hashMap.length());
+console.log(hashMap.get('lion'));
+console.log(hashMap.get('liger'));

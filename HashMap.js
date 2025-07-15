@@ -41,6 +41,17 @@ class HashMap {
     return this.buckets[this.hash(key)].contains(key);
   }
 
+  get(key) {
+
+    let bucket = this.buckets[this.hash(key)];
+    let index = bucket.find(key);
+
+    if (index === null)
+      return null;
+    else
+      return bucket.at(index).value;
+  }
+
   isOverLoadFactor() {
     let currentLoadFactor = this.length() / this.capacity;
     return (currentLoadFactor >= this.loadFactor);
