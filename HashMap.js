@@ -42,7 +42,6 @@ class HashMap {
   }
 
   get(key) {
-
     let bucket = this.buckets[this.hash(key)];
     let index = bucket.find(key);
 
@@ -50,6 +49,11 @@ class HashMap {
       return null;
     else
       return bucket.at(index).value;
+  }
+
+  // TODO
+  remove(key) {
+
   }
 
   isOverLoadFactor() {
@@ -63,6 +67,11 @@ class HashMap {
       count += bucket.size();
     });
     return count;
+  }
+
+  clear() {
+    this.capacity = 16;
+    this.buckets = Array.from({ length: this.capacity }, () => (new LinkedList()));
   }
 
   resize() {
