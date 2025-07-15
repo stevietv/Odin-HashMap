@@ -137,7 +137,14 @@ class LinkedList {
   }
 
   removeAt(index) {
-    if (index <= this.size()) {
+    if (index > this.size()) {
+      return
+    }
+
+    if (index === 0) {
+      this.head = this.head.nextNode;
+    }
+    else {
       let currentNodeAtPreviousIndex = this.at(index - 1);
       currentNodeAtPreviousIndex.nextNode = this.at(index + 1);
     }

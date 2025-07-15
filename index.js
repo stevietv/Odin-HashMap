@@ -20,3 +20,9 @@ console.log(hashMap);
 console.log(hashMap.length());
 console.log(hashMap.get('lion'));
 console.log(hashMap.get('liger'));
+console.log(hashMap.keys());
+console.log(hashMap.values());
+console.log(hashMap.entries());
+console.log(hashMap.remove('liger'))
+console.log(hashMap.remove('dog'))
+console.log(hashMap.entries());

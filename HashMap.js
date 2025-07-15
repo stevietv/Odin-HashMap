@@ -51,9 +51,16 @@ class HashMap {
       return bucket.at(index).value;
   }
 
-  // TODO
   remove(key) {
+    let bucket = this.buckets[this.hash(key)];
+    let index = bucket.find(key);
 
+    if (index === null)
+      return false;
+    else {
+      bucket.removeAt(index);
+      return true;
+    }
   }
 
   isOverLoadFactor() {
@@ -72,6 +79,42 @@ class HashMap {
   clear() {
     this.capacity = 16;
     this.buckets = Array.from({ length: this.capacity }, () => (new LinkedList()));
+  }
+
+  keys() {
+    let keys = [];
+    this.buckets.forEach((bucket) => {
+      let currentNode = bucket.getHead();
+      while (currentNode !== null) {
+        keys.push(currentNode.key);
+        currentNode = currentNode.nextNode;
+      }
+    })
+    return keys;
+  }
+
+  values() {
+    let values = [];
+    this.buckets.forEach((bucket) => {
+      let currentNode = bucket.getHead();
+      while (currentNode !== null) {
+        values.push(currentNode.value);
+        currentNode = currentNode.nextNode;
+      }
+    })
+    return values;
+  }
+
+  entries() {
+    let entries = [];
+    this.buckets.forEach((bucket) => {
+      let currentNode = bucket.getHead();
+      while (currentNode !== null) {
+        entries.push([currentNode.key, currentNode.value]);
+        currentNode = currentNode.nextNode;
+      }
+    })
+    return entries;
   }
 
   resize() {
