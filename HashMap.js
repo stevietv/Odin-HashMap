@@ -20,6 +20,10 @@ class HashMap {
 
   set(key, value) {
     let keyHash = this.hash(key);
+    if (keyHash < 0 || keyHash >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
+
     let bucket = this.buckets[keyHash];
 
     // first check if the key exists, and if so only update it
@@ -38,11 +42,21 @@ class HashMap {
   }
 
   has(key) {
-    return this.buckets[this.hash(key)].contains(key);
+    let keyHash = this.hash(key);
+    if (keyHash < 0 || keyHash >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
+
+    return this.buckets[keyHash].contains(key);
   }
 
   get(key) {
-    let bucket = this.buckets[this.hash(key)];
+    let keyHash = this.hash(key);
+    if (keyHash < 0 || keyHash >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
+
+    let bucket = this.buckets[keyHash];
     let index = bucket.find(key);
 
     if (index === null)
@@ -52,7 +66,12 @@ class HashMap {
   }
 
   remove(key) {
-    let bucket = this.buckets[this.hash(key)];
+    let keyHash = this.hash(key);
+    if (keyHash < 0 || keyHash >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    }
+
+    let bucket = this.buckets[keyHash];
     let index = bucket.find(key);
 
     if (index === null)

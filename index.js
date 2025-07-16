@@ -17,9 +17,9 @@ hashMap.set('lion', 'golden');
 hashMap.set('tiger', 'orange');
 hashMap.set('cat', 'ginger');
 console.log(hashMap);
-console.log(hashMap.length());
-console.log(hashMap.get('lion'));
-console.log(hashMap.get('liger'));
+console.log(hashMap.length()); // 14
+console.log(hashMap.get('lion') === 'golden'); //true
+console.log(hashMap.get('liger')); //null
 console.log(hashMap.keys());
 console.log(hashMap.values());
 console.log(hashMap.entries());
